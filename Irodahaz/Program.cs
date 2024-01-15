@@ -61,5 +61,12 @@ foreach (var iroda in irodak)
     sw.WriteLine(text);
 }
 
-var f12 = irodak.Where(i => i._kod.Equals("LOGMEIN")).ToList();
-int x = f12.Sum() / f12.Count();
+double f12 = 0;
+foreach (var iroda in irodak)
+{
+    if (iroda._kod == "LOGMEIN")
+    {
+        f12 = iroda._letszamok.Sum() / iroda._letszamok.Count();
+    }
+}
+Console.WriteLine($"\nÁtlagosan {Math.Round(f12)} fő dolgozik");
