@@ -70,3 +70,7 @@ foreach (var iroda in irodak)
     }
 }
 Console.WriteLine($"\nÁtlagosan {Math.Round(f12)} fő dolgozik");
+
+int f14 = 0;
+irodak.ForEach(i => f14 += i._letszamok.Sum());
+Console.WriteLine($"\n{f14}");
