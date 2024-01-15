@@ -1,4 +1,5 @@
 ﻿using Irodahaz240112;
+using System.Text;
 
 List<Iroda> irodak = new();
 using StreamReader sr = new(
@@ -40,3 +41,25 @@ foreach (var iroda in irodak)
 if (f9) Console.WriteLine($"\nA {kod} kóddal ellátot cég {sorszam}.-ik irodájában dolgoznak 9-en");
 else Console.WriteLine("\nNincs olyan iroda, ahol 9 ember dolgozik");
 
+using StreamWriter sw = new(
+                path: @"..\..\..\src\UresIrodak.txt",
+                append: false,
+                encoding: UTF8Encoding.UTF8);
+string text = string.Empty;
+
+foreach (var iroda in irodak)
+{
+    text = string.Empty;
+    text += iroda._kod + ": ";
+    for (int i = 0; i < 12; i++)
+    {
+        if (iroda._letszamok[i] == 0)
+        {
+            text += (i + 1).ToString() + ", ";
+        }
+    }
+    sw.WriteLine(text);
+}
+
+var f12 = irodak.Where(i => i._kod.Equals("LOGMEIN")).ToList();
+int x = f12.Sum() / f12.Count();
